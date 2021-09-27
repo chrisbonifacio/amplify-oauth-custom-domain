@@ -1,23 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import { Auth } from "aws-amplify";
 
 function App() {
+  const [state, setState] = useState({
+    authenticated: false,
+    user: null,
+  });
+
+  async function loginWithGoogle() {
+    await Auth.federatedSignIn({
+      provider: "Google",
+    });
+  }
+
+  async function loginWithFacebook() {
+    await Auth.federatedSignIn({
+      provider: "Facebook",
+    });
+  }
+
+  async function logout() {
+    await Auth.signOut();
+  }
+
+  useEffect(() => {
+    (async () => {
+      if (!state.authenticated) {
+        try {
+          const user = await Auth.currentAuthenticatedUser();
+          setState({
+            authenticated: true,
+            user: { username: user.username, ...user.attributes },
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    })();
+  }, [state.authenticated]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <main className="App-container">
+        {state.user ? (
+          <button onClick={logout}>Logout</button>
+        ) : (
+          <>
+            <button onClick={loginWithGoogle}>Login With Google</button>
+            <button onClick={loginWithFacebook}>Login With Facebook</button>
+          </>
+        )}
+      </main>
+
+      <pre>
+        {JSON.stringify(
+          { authenticated: state.authenticated, user: state.user },
+          null,
+          2
+        )}
+      </pre>
     </div>
   );
 }
