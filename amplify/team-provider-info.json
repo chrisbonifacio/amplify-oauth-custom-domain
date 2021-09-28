@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "amplifyoauthcustomdob1dfb70d": {}
+      },
+      "function": {
+        "amplifyoauthcustomdo33da2eb2": {
+          "deploymentBucketName": "amplify-amplifyoauthcustomdo-dev-134851-deployment",
+          "s3Key": "amplify-builds/amplifyoauthcustomdo33da2eb2-3943574c666956477639-build.zip"
+        }
       }
     }
   }
