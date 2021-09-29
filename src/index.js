@@ -7,8 +7,8 @@ import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
 require("dotenv").config();
 
-awsconfig.oauth.redirectSignIn = process.env.REACT_APP_AUTH_REDIRECT_SIGNIN;
-awsconfig.oauth.redirectSignOut = process.env.REACT_APP_AUTH_REDIRECT_SIGNIN;
+awsconfig.oauth.redirectSignIn = "https://" + window.location.hostname;
+awsconfig.oauth.redirectSignOut = "https://" + window.location.hostname;
 
 // Testing OAuth with custom domain
 // Google
