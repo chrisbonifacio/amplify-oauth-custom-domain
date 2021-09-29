@@ -10,6 +10,8 @@ require("dotenv").config();
 awsconfig.oauth.redirectSignIn = process.env.REACT_APP_AUTH_REDIRECT_SIGNIN;
 awsconfig.oauth.redirectSignOut = process.env.REACT_APP_AUTH_REDIRECT_SIGNIN;
 
+// Testing OAuth with custom domain
+
 Amplify.Logger.LOG_LEVEL = "DEBUG";
 
 Amplify.configure(awsconfig);
