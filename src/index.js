@@ -5,9 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
+require("dotenv").config();
 
-awsconfig.oauth.redirectSignIn = process.env.NEXT_PUBLIC_AUTH_REDIRECT_SIGNIN;
-awsconfig.oauth.redirectSignOut = process.env.NEXT_PUBLIC_AUTH_REDIRECT_SIGNIN;
+awsconfig.oauth.redirectSignIn = process.env.REACT_APP_AUTH_REDIRECT_SIGNIN;
+awsconfig.oauth.redirectSignOut = process.env.REACT_APP_AUTH_REDIRECT_SIGNIN;
 
 Amplify.Logger.LOG_LEVEL = "DEBUG";
 
