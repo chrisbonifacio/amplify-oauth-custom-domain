@@ -6,6 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
 
+awsconfig.oauth.redirectSignIn = process.env.NEXT_PUBLIC_AUTH_REDIRECT_SIGNIN;
+awsconfig.oauth.redirectSignOut = process.env.NEXT_PUBLIC_AUTH_REDIRECT_SIGNIN;
+
 Amplify.Logger.LOG_LEVEL = "DEBUG";
 
 Amplify.configure(awsconfig);
