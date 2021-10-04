@@ -41,7 +41,7 @@ const updatedAwsConfig = {
 
 Amplify.Logger.LOG_LEVEL = "DEBUG";
 
-Amplify.configure(updatedAwsConfig);
+// Amplify.configure(updatedAwsConfig);
 
 ReactDOM.render(
   <React.StrictMode>
