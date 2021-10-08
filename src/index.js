@@ -39,9 +39,9 @@ const updatedAwsConfig = {
 // Testing OAuth with custom domain
 // Google
 
-// Amplify.Logger.LOG_LEVEL = "DEBUG";
+Amplify.Logger.LOG_LEVEL = "DEBUG";
 
-// Amplify.configure(updatedAwsConfig);
+Amplify.configure(updatedAwsConfig);
 
 ReactDOM.render(
   <React.StrictMode>
